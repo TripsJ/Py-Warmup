@@ -1,3 +1,14 @@
+:PROPERTIES:
+#+TITLE: Python Warmup
+#+AUTHOR: J. Trips
+#+DATE: <2025-01-08>
+#+LANGUAGE: de
+#+EXPORT_FILE_NAME: Readme
+#+DESCRIPTION: Erklärungen zum Python Warmup
+#+STARTUP: show2levels
+#+OPTIONS: toc:2
+:END:
+
 
 * Intro
 
@@ -56,4 +67,44 @@ Ziel: Erstelle ein einfaches To-Do-Listen-Programm.
 Das klang für den Anfang ganz gut, also machen wir das so. Ich löse die vorgeschlagenen aufgaben der Reihe nach und bediene mich an W3Shool Resourcen wenn ich was nicht weiß oder unsicher bin.
 Verwenden werde ich dafür Emacs und ich schreibe den code in Org-Dateien, die ich dann in Python Files umwandeln lasse. So gewöhne ich mich an Org und hab nachher eine Saubere Dokumentation.
 
-Sowohl die Org Dateien als auch den reinen quellcode lade ich hier Hoch. und mehr übungen folgen wenn ich deke das ich noch was brauche.
+Sowohl die Org Dateien als auch den reinen Quellcode lade ich hier Hoch. und mehr übungen folgen wenn ich deke das ich noch was brauche.
+
+* Emacs und Environment Setup
+** Template Org File
+
+Ich habe für den Anfang eine Org Datei erstellt mit einer reihe an Property Definitionen die als Template genutzt wird. Diese definitionen wurden gesetzt:
+
+#+begin_src 
+   :PROPERTIES:
+   #+TITLE: Insert Title
+   #+AUTHOR: J. Trips
+   #+DATE: <2025-01-09 jeu>
+   #+LANGUAGE: en
+   #+EXPORT_FILE_NAME: target_file_name
+   #+DESCRIPTION: Description
+   #+STARTUP: show2levels
+   #+OPTIONS: toc:2
+   :END:
+
+#+end_src
+
+der Zweck dieser Datei ist nur das ich die Properties nicht vergesse, Die Inhalte werden dann geändert oder entfernt wie nötig.
+Zusätzlich lassen sich noch standard Argumente für code blöcke setzen, wie zum Beispiel:
+#+begin_src
+  #+PROPERTY: header-args: python -n
+
+
+#+end_src
+
+was alle Code Blöcke auf Python code einstellt und durchnummeriert.
+** Git
+Dieses Git repo wurde mit von Github erstellt und dann per *SSH* auf gecloned, da Gitub den support für https Authentifizierung eingestellt hat.
+
+Ich habe des weiteren eine .gitignore Datei erstellt mit dem folgenden Inhalt
+
+#+begin_src .gitignore
+   *.org~
+#+end_src
+
+das sorgt dafür das die von Emacs erstellten Backups von git Ignioriert werden, auch diese Datei wird wie benötigt erweitert
+
