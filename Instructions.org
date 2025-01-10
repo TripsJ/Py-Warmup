@@ -102,10 +102,61 @@ was alle Code Blöcke auf Python code einstellt und durchnummeriert.
 Dieses Git repo wurde mit von Github erstellt und dann per *SSH* auf gecloned, da Gitub den support für https Authentifizierung eingestellt hat.
 
 Ich habe des weiteren eine .gitignore Datei erstellt mit dem folgenden Inhalt
+Diese habe ich mir ergoogelt
 
 #+begin_src .gitignore
-   *.org~
+# -*- mode: gitignore; -*-
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Org-mode
+.org-id-locations
+*_archive
+
+# flymake-mode
+*_flymake.*
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# elpa packages
+/elpa/
+
+# reftex files
+*.rel
+
+# AUCTeX auto folder
+/auto/
+
+# cask packages
+.cask/
+dist/
+
+# Flycheck
+flycheck_*.el
+
+# server auth directory
+/server/
+
+# projectiles files
+.projectile
+
+# directory configuration
+.dir-locals.el
+
+# network security
+/network-security.data
 #+end_src
 
-das sorgt dafür das die von Emacs erstellten Backups von git Ignioriert werden, auch diese Datei wird wie benötigt erweitert
+das sorgt dafür das die von Emacs erstellten Backups von git Ignioriert werden, auch diese Datei wird wie benötigt erweitert, Sowie eventuelle elpa packages oder Latex inhalte
+
+90 % davon nutze ich aktuell noch nicht aber es klingt sinnig
+
 
