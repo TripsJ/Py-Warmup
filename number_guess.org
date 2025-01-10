@@ -1,0 +1,109 @@
+#+TITLE: number_guess
+#+AUTHOR: J. Trips
+#+DATE: <2025-01-09 jeu>
+#+LANGUAGE: en
+#+EXPORT_FILE_NAME: number_guess
+#+DESCRIPTION: A number guessing game in Python
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+* Number guessing game
+:PROPERTIES:
+:header-args: :tangle number_guess.py :exports code
+:END:
+
+** Instructions
+
+Create a number guessing game:
+- The user has to guess a random number between 1 and 100
+- The program reports if the inputted number was higher or lower than the target
+- The program counts the users tries and reports them at the end.
+   
+** Imports
+
+The following libraries are needed to make the code work
+#+begin_src python
+  from random import randint
+#+end_src
+
+The /random/ library contains functions for pseudorandom selections, among those /randint/ is made for random integers
+
+
+** Generate a random number and initalize counter
+
+#+begin_src python
+  target = randint(1,100)
+  tries = 0
+#+end_src
+
+Technically =randint(1,100)= is an alias for =randrange(1,101)=
+
+
+** create loop until user guesses correctly
+This creates an infinite loop
+#+begin_src python
+while True:
+#+end_src
+
+all that follows, happens inside the loop
+
+*** initialize error handling
+
+In case something goes wrong we try here, that allowes us to keep the rest of the code from crashing in case something unexpected happens
+
+#+begin_src python
+  try:
+#+end_src
+
+
+*** Ask user for number and convert it to an int
+
+#+begin_src python
+      user_input = int(input("Guess a number: "))
+#+end_src
+
+The =int()= function converts a string to an integer while =input(prompt)= asks the user to enter something using the specified /prompt/ and returns a string
+
+**** Scenario 1: The guess is correct
+
+if the guess is correct output a congratulation including the number of tries and quit the loop
+
+#+begin_src python
+     if user_input == target:
+          print (f"You won with {tries} failed attempts")
+          break
+#+end_src
+
+**** Scenario 2 The guess is higher than the target
+
+We tell th user they are too high and increase the number of tries by 1
+#+begin_src python
+     elif user_input > target:
+          print ("The number we are looking for is lower")
+          tries += 1
+#+end_src
+
+**** Scenario 3 The guess is lower than the target
+basically the same as scenario 2 just a different message
+
+#+begin_src python
+     else:
+         print ("The number we are looking for is higher")
+         tries += 1
+#+end_src
+
+*** Handle user inputting anything but an int
+
+Insult the user and do not break the loop, just go to the next turn
+count it as a failed attempt, maybe he will learn
+
+#+begin_src python
+  except ValueError:
+      print("that was bs, Try again")
+      tries += 1
+      continue
+#+end_src
+
+The =ValueError= is the exception thrown by =int()= earlier, this prevents a crash of the project
+
+

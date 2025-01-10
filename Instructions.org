@@ -97,6 +97,7 @@ Zusätzlich lassen sich noch standard Argumente für code blöcke setzen, wie zu
 #+end_src
 
 was alle Code Blöcke auf Python code einstellt und durchnummeriert.
+
 ** Git
 Dieses Git repo wurde mit von Github erstellt und dann per *SSH* auf gecloned, da Gitub den support für https Authentifizierung eingestellt hat.
 

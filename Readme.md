@@ -1,30 +1,30 @@
-- [Intro](#orga0362ce)
-- [🚀 Willkommen zurück in der Welt von Python! 🐍](#org81447fd)
-  - [📚 1. Grundlagen-Auffrischung](#org6f9b586)
-  - [🧠 2. Übungen zur Auffrischung](#orgc5093a4)
-- [Mein Plan](#orgcad185c)
-- [Emacs und Environment Setup](#org2a7bd39)
-  - [Template Org File](#orgbbc4ec9)
-  - [Git](#orga63069f)
+- [Intro](#orgf57d020)
+- [🚀 Willkommen zurück in der Welt von Python! 🐍](#orgbcf1e4d)
+  - [📚 1. Grundlagen-Auffrischung](#org438acc2)
+  - [🧠 2. Übungen zur Auffrischung](#org99f30a7)
+- [Mein Plan](#org9035fd4)
+- [Emacs und Environment Setup](#orgac1cf50)
+  - [Template Org File](#org210247a)
+  - [Git](#org37ad1cc)
 
 
 
 
-<a id="orga0362ce"></a>
+<a id="orgf57d020"></a>
 
 # Intro
 
 Nach einiger Zeit weg von Python, möchte ich nun Django lernen, habe aber das Gefühl, das mir die Grundlagen etwas abhanden gekommen sind. Also hab ich gemacht was alle machen, ich hab Chat GPT gefragt. Wonach, Nach übungen. Im folgenden die Antwort von ChatGPT:
 
 
-<a id="org81447fd"></a>
+<a id="orgbcf1e4d"></a>
 
 # 🚀 Willkommen zurück in der Welt von Python! 🐍
 
 Zwei Monate Pause sind kein Problem – das Programmieren ist wie Fahrradfahren. Lass uns Schritt für Schritt dein Wissen auffrischen und dich wieder in Schwung bringen.
 
 
-<a id="org6f9b586"></a>
+<a id="org438acc2"></a>
 
 ## 📚 1. Grundlagen-Auffrischung
 
@@ -38,7 +38,7 @@ Wir starten mit den wichtigsten Konzepten:
 -   Fehlerbehandlung (try-except)
 
 
-<a id="orgc5093a4"></a>
+<a id="org99f30a7"></a>
 
 ## 🧠 2. Übungen zur Auffrischung
 
@@ -70,7 +70,7 @@ Ziel: Erstelle ein einfaches To-Do-Listen-Programm.
 -   Speichere die Liste in einer Textdatei.
 
 
-<a id="orgcad185c"></a>
+<a id="org9035fd4"></a>
 
 # Mein Plan
 
@@ -79,12 +79,12 @@ Das klang für den Anfang ganz gut, also machen wir das so. Ich löse die vorges
 Sowohl die Org Dateien als auch den reinen Quellcode lade ich hier Hoch. und mehr übungen folgen wenn ich deke das ich noch was brauche.
 
 
-<a id="org2a7bd39"></a>
+<a id="orgac1cf50"></a>
 
 # Emacs und Environment Setup
 
 
-<a id="orgbbc4ec9"></a>
+<a id="org210247a"></a>
 
 ## Template Org File
 
@@ -115,7 +115,7 @@ der Zweck dieser Datei ist nur das ich die Properties nicht vergesse, Die Inhalt
 was alle Code Blöcke auf Python code einstellt und durchnummeriert.
 
 
-<a id="orga63069f"></a>
+<a id="org37ad1cc"></a>
 
 ## Git
 
