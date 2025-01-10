@@ -1,30 +1,30 @@
-- [Intro](#orgf57d020)
-- [🚀 Willkommen zurück in der Welt von Python! 🐍](#orgbcf1e4d)
-  - [📚 1. Grundlagen-Auffrischung](#org438acc2)
-  - [🧠 2. Übungen zur Auffrischung](#org99f30a7)
-- [Mein Plan](#org9035fd4)
-- [Emacs und Environment Setup](#orgac1cf50)
-  - [Template Org File](#org210247a)
-  - [Git](#org37ad1cc)
+- [Intro](#org5fb971e)
+- [🚀 Willkommen zurück in der Welt von Python! 🐍](#orgab3c3d7)
+  - [📚 1. Grundlagen-Auffrischung](#org4591651)
+  - [🧠 2. Übungen zur Auffrischung](#org82c46ad)
+- [Mein Plan](#org8fdbb8b)
+- [Emacs und Environment Setup](#org220805b)
+  - [Template Org File](#orga01afc0)
+  - [Git](#org171570a)
 
 
 
 
-<a id="orgf57d020"></a>
+<a id="org5fb971e"></a>
 
 # Intro
 
 Nach einiger Zeit weg von Python, möchte ich nun Django lernen, habe aber das Gefühl, das mir die Grundlagen etwas abhanden gekommen sind. Also hab ich gemacht was alle machen, ich hab Chat GPT gefragt. Wonach, Nach übungen. Im folgenden die Antwort von ChatGPT:
 
 
-<a id="orgbcf1e4d"></a>
+<a id="orgab3c3d7"></a>
 
 # 🚀 Willkommen zurück in der Welt von Python! 🐍
 
 Zwei Monate Pause sind kein Problem – das Programmieren ist wie Fahrradfahren. Lass uns Schritt für Schritt dein Wissen auffrischen und dich wieder in Schwung bringen.
 
 
-<a id="org438acc2"></a>
+<a id="org4591651"></a>
 
 ## 📚 1. Grundlagen-Auffrischung
 
@@ -38,7 +38,7 @@ Wir starten mit den wichtigsten Konzepten:
 -   Fehlerbehandlung (try-except)
 
 
-<a id="org99f30a7"></a>
+<a id="org82c46ad"></a>
 
 ## 🧠 2. Übungen zur Auffrischung
 
@@ -70,7 +70,7 @@ Ziel: Erstelle ein einfaches To-Do-Listen-Programm.
 -   Speichere die Liste in einer Textdatei.
 
 
-<a id="org9035fd4"></a>
+<a id="org8fdbb8b"></a>
 
 # Mein Plan
 
@@ -79,12 +79,12 @@ Das klang für den Anfang ganz gut, also machen wir das so. Ich löse die vorges
 Sowohl die Org Dateien als auch den reinen Quellcode lade ich hier Hoch. und mehr übungen folgen wenn ich deke das ich noch was brauche.
 
 
-<a id="orgac1cf50"></a>
+<a id="org220805b"></a>
 
 # Emacs und Environment Setup
 
 
-<a id="org210247a"></a>
+<a id="orga01afc0"></a>
 
 ## Template Org File
 
@@ -115,16 +115,65 @@ der Zweck dieser Datei ist nur das ich die Properties nicht vergesse, Die Inhalt
 was alle Code Blöcke auf Python code einstellt und durchnummeriert.
 
 
-<a id="org37ad1cc"></a>
+<a id="org171570a"></a>
 
 ## Git
 
 Dieses Git repo wurde mit von Github erstellt und dann per **SSH** auf gecloned, da Gitub den support für https Authentifizierung eingestellt hat.
 
-Ich habe des weiteren eine .gitignore Datei erstellt mit dem folgenden Inhalt
+Ich habe des weiteren eine .gitignore Datei erstellt mit dem folgenden Inhalt Diese habe ich mir ergoogelt
 
 ```.gitignore
-*.org~
+# -*- mode: gitignore; -*-
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Org-mode
+.org-id-locations
+*_archive
+
+# flymake-mode
+*_flymake.*
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# elpa packages
+/elpa/
+
+# reftex files
+*.rel
+
+# AUCTeX auto folder
+/auto/
+
+# cask packages
+.cask/
+dist/
+
+# Flycheck
+flycheck_*.el
+
+# server auth directory
+/server/
+
+# projectiles files
+.projectile
+
+# directory configuration
+.dir-locals.el
+
+# network security
+/network-security.data
 ```
 
-das sorgt dafür das die von Emacs erstellten Backups von git Ignioriert werden, auch diese Datei wird wie benötigt erweitert
+das sorgt dafür das die von Emacs erstellten Backups von git Ignioriert werden, auch diese Datei wird wie benötigt erweitert, Sowie eventuelle elpa packages oder Latex inhalte
+
+90 % davon nutze ich aktuell noch nicht aber es klingt sinnig
