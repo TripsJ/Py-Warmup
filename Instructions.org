@@ -1,4 +1,3 @@
-:PROPERTIES:
 #+TITLE: Python Warmup
 #+AUTHOR: J. Trips
 #+DATE: <2025-01-08>
@@ -7,7 +6,6 @@
 #+DESCRIPTION: Erklärungen zum Python Warmup
 #+STARTUP: show2levels
 #+OPTIONS: toc:2
-:END:
 
 
 * Intro
@@ -90,10 +88,9 @@ Ich habe für den Anfang eine Org Datei erstellt mit einer reihe an Property Def
 
 der Zweck dieser Datei ist nur das ich die Properties nicht vergesse, Die Inhalte werden dann geändert oder entfernt wie nötig.
 Zusätzlich lassen sich noch standard Argumente für code blöcke setzen, wie zum Beispiel:
+
 #+begin_src
   #+PROPERTY: header-args: python -n
-
-
 #+end_src
 
 was alle Code Blöcke auf Python code einstellt und durchnummeriert.
