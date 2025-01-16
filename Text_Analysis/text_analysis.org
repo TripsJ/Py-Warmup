@@ -20,7 +20,6 @@ Goal: Write a Text analysis program that analyses a string of numbers
 - ask the User for Text
 - Count Symbols, Words and the number of occurences of each letter
 - Return the results
-
   
 ** Get Input from User
 This part should get a string of text from the user and verify that it is actually text and not untreatable.
@@ -36,4 +35,41 @@ This part should get a string of text from the user and verify that it is actual
 
 =String.isascii()= makes sure the inputed text is entierly contained in the ascii table, as this is what we will be checking against. If it is not Ascii, the function will raise a =ValueError= that we will use to except later.
 
+** Count the occurences of every symbol in the string and and keep track of them
+the idea is to take the tect from the previous function and itterate through it, keeping track of each occurence. /Strings/ are just /List/'s in Python anyway so we can just loop through tham. 
 
+#+begin_src python
+  def analyse_text(text):
+    store = {}
+    for letter in text:
+      if letter in store:
+        store[letter]+=1
+      else:
+        store[letter] = 1
+    return store
+
+#+end_src
+
+** Interprete the dictionary:
+we need to present the text analysis
+- spaces are words
+- . ! ? are sentences, but words too, if they are the last character
+** weave it together and call the program to execute
+
+in this last section we are going to put all the pieces together and execute the code, The idea is an infinite loop, which we break out of once we have text to analyse.
+
+If a value error occures, we skip the itteration
+
+#+begin_src python
+  def main():
+    while True:
+      try:
+        text = check_text()
+        break
+    except ValueError:
+      print("Non ASCII character detected, try again")
+      continue
+    print(analyse_text(text))
+
+  main()
+#+end_src
