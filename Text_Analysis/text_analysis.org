@@ -38,7 +38,7 @@ This part should get a string of text from the user and verify that it is actual
 ** Count the occurences of every symbol in the string and and keep track of them
 the idea is to take the tect from the previous function and itterate through it, keeping track of each occurence. /Strings/ are just /List/'s in Python anyway so we can just loop through tham. 
 
-#+begin_src python
+#+begin_src python :tangle no
   def analyse_text(text):
     store = {}
     for letter in text:
@@ -50,10 +50,42 @@ the idea is to take the tect from the previous function and itterate through it,
 
 #+end_src
 
-** Interprete the dictionary:
+We need to keep a couple of conditions in mind.
+
 we need to present the text analysis
 - spaces are words
 - . ! ? are sentences, but words too, if they are the last character
+  #+begin_src python
+    def analyse_text(text):
+     words = 0
+     letters  = 0
+     symbols = 0
+     sentences = 0
+     senence_ends = [".","!","?"]
+     store = {}
+     if text[-1] in sentence_ends:
+       words += 1
+     for element in text:
+      if element in store:
+         store[element]+=1
+       else:
+         store[element] = 1
+       if element in sentence_ends:
+        sentences +=1
+       else element == " ":
+        words += 1
+       if element.isalpha():
+        letters += 1
+       else:
+        symbol += 1
+       store["letters"] = letters
+       store["symbols"] = symbols
+       store["sentences"] = sentences
+
+
+     return store
+
+#+end_src
 ** weave it together and call the program to execute
 
 in this last section we are going to put all the pieces together and execute the code, The idea is an infinite loop, which we break out of once we have text to analyse.

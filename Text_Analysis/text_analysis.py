@@ -6,13 +6,33 @@ def check_text():
         raise ValueError
 
 def analyse_text(text):
-  store = {}
-  for letter in text:
-    if letter in store:
-      store[letter]+=1
-    else:
-      store[letter] = 1
-  return store
+    words = 0
+    letters  = 0
+    symbols = 0
+    sentences = 0
+    sentence_ends = [".","!","?"]
+    store = {}
+    if text[-1] in sentence_ends:
+        words += 1
+    for element in text:
+        if element in store:
+            store[element]+=1
+        else:
+            store[element] = 1
+        if element in sentence_ends:
+            sentences +=1
+        elif element == " ":
+            words += 1
+        if element.isalpha():
+            letters += 1
+        else:
+            symbols += 1
+    store["letters"] = letters
+    store["symbols"] = symbols
+    store["sentences"] = sentences
+
+
+    return store
 
 def main():
   while True:
@@ -22,6 +42,7 @@ def main():
     except ValueError:
         print("Non ASCII character detected, try again")
         continue
+    
   print(analyse_text(text))
 
 main()
