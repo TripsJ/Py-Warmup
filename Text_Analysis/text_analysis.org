@@ -15,6 +15,7 @@
 :END:
 
 ** Instructions
+
 Goal: Write a Text analysis program that analyses a string of numbers
 
 - ask the User for Text
@@ -22,11 +23,12 @@ Goal: Write a Text analysis program that analyses a string of numbers
 - Return the results
   
 ** Get Input from User
+
 This part should get a string of text from the user and verify that it is actually text and not untreatable.
 
 #+begin_src python
   def check_text():
-      intext = input("Get me some text to analyze: ")
+      intext = input("Get me some text to analyze: ").lower()
       if intext.isascii():
           return intext
       else:
@@ -34,8 +36,10 @@ This part should get a string of text from the user and verify that it is actual
 #+end_src
 
 =String.isascii()= makes sure the inputed text is entierly contained in the ascii table, as this is what we will be checking against. If it is not Ascii, the function will raise a =ValueError= that we will use to except later.
+=.lower()= converts everything to lower case
 
 ** Count the occurences of every symbol in the string and and keep track of them
+
 the idea is to take the tect from the previous function and itterate through it, keeping track of each occurence. /Strings/ are just /List/'s in Python anyway so we can just loop through tham. 
 
 #+begin_src python :tangle no
@@ -55,37 +59,69 @@ We need to keep a couple of conditions in mind.
 we need to present the text analysis
 - spaces are words
 - . ! ? are sentences, but words too, if they are the last character
-  #+begin_src python
-    def analyse_text(text):
+
+#+begin_src python
+  def analyse_text(text):
      words = 0
      letters  = 0
      symbols = 0
      sentences = 0
-     senence_ends = [".","!","?"]
+     sentence_ends = [".","!","?"]
      store = {}
      if text[-1] in sentence_ends:
-       words += 1
+         words += 1
      for element in text:
-      if element in store:
-         store[element]+=1
-       else:
-         store[element] = 1
-       if element in sentence_ends:
-        sentences +=1
-       else element == " ":
-        words += 1
-       if element.isalpha():
-        letters += 1
-       else:
-        symbol += 1
-       store["letters"] = letters
-       store["symbols"] = symbols
-       store["sentences"] = sentences
-
+         if element in store:
+             store[element]+=1
+         else:
+             store[element] = 1
+         if element in sentence_ends:
+             sentences +=1
+         elif element == " ":
+             words += 1
+         if element.isalpha():
+             letters += 1
+         else:
+             symbols += 1
+     store["letters"] = letters
+     store["symbols"] = symbols
+     store["sentences"] = sentences
 
      return store
-
 #+end_src
+
+This function analyses the text input as discribed and returns a dictionary
+
+** present Data
+This function will take care of presenting the data to the user.
+#+begin_src python
+  def present(analysis :dict):
+  grouped_analysis = ["words","sentences","letters","symbols"]
+  for k in grouped_analysis:
+    if k in analysis:
+      if analysis[k] == 1:
+        print(f" there is 1 {k[:-1]} in the provided text")
+      else:
+        print(f"there are {analysis[k]} {k} in the provided text")
+      analysis.pop(k)
+    else:
+      print(f"there are no {k} in the provided text")
+  analysis["<SPACE>"] = analysis.pop(" ")
+  print(" ")
+  print("the following distribution was encountered: ")
+  for k,v in analysis.items():
+    print(f"{k} was found {v} times"
+#+end_src
+
+we create a list of th elements that do not reprisent single symbols, so we can treat them all in the same way.
+
+If a key with a name from the list is in the dictionary, we check the number of occurences and if it is 1, we slice of the s  through ={k[:-1]}= 
+
+We also remove these from the dictionary with  =analysis.pop(k)=
+=dict.pop()= actually retrieves the value so we can use it to rename a key. like this =analysis["<SPACE>"] = analysis.pop(" ")= 
+
+Afterwards we itterate through all key, value pairs in the dictionary using the =dict.items()= method, and prit them out 1 by one.
+
 ** weave it together and call the program to execute
 
 in this last section we are going to put all the pieces together and execute the code, The idea is an infinite loop, which we break out of once we have text to analyse.
@@ -101,7 +137,7 @@ If a value error occures, we skip the itteration
     except ValueError:
       print("Non ASCII character detected, try again")
       continue
-    print(analyse_text(text))
+    present(analyse_text(text))
 
   main()
 #+end_src
