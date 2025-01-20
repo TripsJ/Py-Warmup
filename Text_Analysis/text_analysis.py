@@ -34,29 +34,29 @@ def analyse_text(text):
    return store
 
 def present(analysis :dict):
-  grouped_analysis = ["words","sentences","letters","symbols"]
-  for k in grouped_analysis:
-    if k in analysis:
-      if analysis[k] == 1:
-        print(f" there is 1 {k[:-1]} in the provided text")
-      else:
-        print(f"there are {analysis[k]} {k} in the provided text")
-      analysis.pop(k)
+grouped_analysis = ["words","sentences","letters","symbols"]
+for k in grouped_analysis:
+  if k in analysis:
+    if analysis[k] == 1:
+      print(f" there is 1 {k[:-1]} in the provided text")
     else:
-      print(f"there are no {k} in the provided text")
-  analysis["<SPACE>"] = analysis.pop(" ")    
-  print(" ")
-  print("the following distribution was encountered: ")
-  for k,v in analysis.items():
-    print(f"{k} was found {v} times")
+      print(f"there are {analysis[k]} {k} in the provided text")
+    analysis.pop(k)
+  else:
+    print(f"there are no {k} in the provided text")
+analysis["<SPACE>"] = analysis.pop(" ")
+print(" ")
+print("the following distribution was encountered: ")
+for k,v in analysis.items():
+  print(f"{k} was found {v} times"
 
 def main():
   while True:
     try:
       text = check_text()
       break
-    except ValueError:
-        print("Non ASCII character detected, try again")
+  except ValueError:
+    print("Non ASCII character detected, try again")
     continue
   present(analyse_text(text))
 
