@@ -227,8 +227,9 @@ we will go through this process function by function
 from collections import defaultdict
 #+end_src
 ** check text
+let us add type annotations to everything 
 #+begin_src python
-def check_text():
+def check_text()-> str:
     intext = input("Get me some text to analyze: ")
     if intext.isascii():
         return intext.lower().strip()
@@ -236,7 +237,7 @@ def check_text():
         raise ValueError
 #+end_src
 
-Not much here, except moving the .lower() to the return value to shorten the line at the top
+Not much here, except moving the .lower() also strip the whitespace off beginning and end to the return value to shorten the line at the top
 
 ** analyze_text
 First, the starting assignement can be one line since the counters all start at 0
@@ -248,7 +249,7 @@ Every ellement will than be initialized at 0 if not in the dictionary already. t
 
 We can also adress the contents of the dict directly since they get initialized at 0 anyways if the dont exsist. And since we now initialize all elements at 0by default, we dont need the assignement for letters numbers words sentences and symbols at all
 #+begin_src python
-  def analyse_text(text):
+  def analyse_text(text :str)-> dict:
      store = defaultdict(int)
      sentence_ends = [".","!","?"]
      if text[0].isalnum():
@@ -269,7 +270,7 @@ We can also adress the contents of the dict directly since they get initialized 
 Here we can first fix a bug, when replacing " " we need to check if there are spaces in the distribution. We can do that by adding =if " " in analysis.keys():= before poping the " ".
 
 #+begin_src python
-  def present(analysis :dict):
+  def present(analysis :dict) ->None:
     grouped_analysis = ["words","sentences","letters","symbols"]
     for k in grouped_analysis:
       if k in analysis:
