@@ -1,5 +1,5 @@
 def check_text():
-    intext = input("Get me some text to analyze: ").lower()
+    intext = input("Get me some text to analyze: ").lower().strip()
     if intext.isascii():
         return intext
     else:
@@ -12,7 +12,7 @@ def analyse_text(text):
    sentences = 0
    sentence_ends = [".","!","?"]
    store = {}
-   if text[-1] in sentence_ends:
+   if text[0].isalnum():
        words += 1
    for element in text:
        if element in store:

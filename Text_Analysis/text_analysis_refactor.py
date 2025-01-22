@@ -3,14 +3,14 @@ from collections import defaultdict
 def check_text():
     intext = input("Get me some text to analyze: ")
     if intext.isascii():
-        return intext.lower()
+        return intext.lower().strip()
     else:
         raise ValueError
 
 def analyse_text(text):
    store = defaultdict(int)
    sentence_ends = [".","!","?"]
-   if text[-1] in sentence_ends:
+   if text[0].isalnum():
        store["words"] += 1
    for element in text:
        store[element]+=1
