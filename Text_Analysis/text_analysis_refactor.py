@@ -1,13 +1,13 @@
 from collections import defaultdict
 
-def check_text():
+def check_text()-> str:
     intext = input("Get me some text to analyze: ")
     if intext.isascii():
         return intext.lower().strip()
     else:
         raise ValueError
 
-def analyse_text(text):
+def analyse_text(text:str)->dict:
     current_word = False
     store = defaultdict(int)
     sentence_ends = [".","!","?"]
@@ -30,7 +30,7 @@ def analyse_text(text):
                store["symbols"] += 1
     return store
 
-def present(analysis :dict):
+def present(analysis :dict)-> None:
   grouped_analysis = ["words","sentences","letters","symbols"]
   for k in grouped_analysis:
     if k in analysis:
