@@ -33,6 +33,7 @@ def menu(tasklist)->None:
     print("Please choose your action")
     print("Press A to add a task")
     print("Press R to remove a task")
+    print("Press L to load a tasklist from a file")
     print("Press S to save the current task list")
     print ("Press Q to exit the program")
     print("")
@@ -43,11 +44,13 @@ def menu(tasklist)->None:
         tasklist = add_task(tasklist)
       case "R":
         tasklist = remove_task(tasklist)
-      case "S":
+      case "S" | "L":
         print("not yet implemented")
       case "Q":
         print("Goodbye")
         break
+      case _:
+        print("invalid inuput")
 
 def main():
     print ("Welcome User")
