@@ -18,7 +18,7 @@ Target: Build a simple todolist program
 - Tasks are saved as a text file
 
 ** store tasks
-we will store tasks in a list for the time being, lits are indexed and that will come in handy later
+we will store tasks in a list for the time being, lists are indexed and that will come in handy later
 
 #+begin_src python
 tasklist = []
@@ -37,6 +37,8 @@ This will check if the string is empty or all whitespace and return true if not
     if is_not_blank(task):
       tasklist.append(task)
       return tasklist
+    else:
+      return tasklist
 #+end_src
 ** remove Task
 now to remove a task, retyping it would be a bother so we will adress them with their index
@@ -44,27 +46,67 @@ now to remove a task, retyping it would be a bother so we will adress them with 
 #+begin_src python
    def remove_task(tasklist: list)-> list:
      selected_task = int(input("which task do you want to remove (Index N°)?: "))
-     if tasklist[selected_task]:
+     try:
         print(f"{tasklist.pop(selected_task)} has been removed")
-     else:
+     except IndexError:
         print("The specified task does not exsist")
      return tasklist
 
 #+end_src
 ** display Tasks
+#+begin_src python
+  def display(tasklist:list)->None:
+    if not tasklist:
+      print ("YOUR ALL DONE")
+    else:
+      for count, task in enumerate(tasklist):
+        print (f"{count}. {task}")
+#+end_src
+
+The ~enumerate()~ function takes an itterable and assignes it a value, you can use it to create counters in loops
 ** save Tasks
+
 ** load Tasks
+** Interactive menu
+we need an interactive menu to display the Items and the users choices
+a while loop will do the trick
+
+#+begin_src python
+  def menu(tasklist)->None:  
+    while True:
+      display(tasklist)
+      print("")
+      print("Please choose your action")
+      print("Press A to add a task")
+      print("Press R to remove a task")
+      print("Press S to save the current task list")
+      print ("Press Q to exit the program")
+      print("")
+      action = input("Please select your action: ").upper()
+
+      match action:
+        case "A":
+          tasklist = add_task(tasklist)
+        case "R":
+          tasklist = remove_task(tasklist)
+        case "S":
+          print("not yet implemented")
+        case "Q":
+          print("Goodbye")
+          break
+#+end_src
 ** Main function and execution
 Here we put everything together and run the program
 
 #+begin_src python
   def main():
-      print("Hello")
-      print(add_task(tasklist))
-      print(remove_task(tasklist))
+      print ("Welcome User")
+      print("")
+      menu(tasklist)
+
 
   if __name__ == "__main__":
       main()
 #+end_src
 
-the ~if __name__ == "__main__":~ checks if the code is intended to be ececuted and not just imported, so it doesent run when someone imports, say is_not_blank() for his own use.
+the ~if __ name  == "__ main __":~ checks if the code is intended to be ececuted and not just imported, so it doesent run when someone imports, say is_not_blank() for his own use.
