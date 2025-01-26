@@ -7,30 +7,24 @@ def check_text()-> str:
     else:
         raise ValueError
 
-def analyse_text(text:str)->dict:
-    current_word = False
-    store = defaultdict(int)
-    sentence_ends = [".","!","?"]
-    if text[0].isalnum():
+def analyse_text(text :str)-> dict:
+   store = defaultdict(int)
+   sentence_ends = [".","!","?"]
+   if text[0].isalnum():
        store["words"] += 1
-       for element in text:
-           store[element]+=1
-           if element in sentence_ends:
-               store["sentences"] +=1
-           if element.isalpha():
-               current_word = True
-               store["letters"] += 1
-           elif element == " " and current_word:
-               store["words"] += 1
-               store[" "] += 1
-               current_word = False
-           elif element == " " and not current_word:
-               store[" "] += 1
-           else:
-               store["symbols"] += 1
-    return store
+   for element in text:
+       store[element]+=1
+       if element in sentence_ends:
+           store["sentences"] +=1
+       elif element == " ":
+           store["words"] += 1
+       if element.isalpha():
+           store["letters"] += 1
+       else:
+           store["symbols"] += 1
+   return store
 
-def present(analysis :dict)-> None:
+def present(analysis :dict) ->None:
   grouped_analysis = ["words","sentences","letters","symbols"]
   for k in grouped_analysis:
     if k in analysis:

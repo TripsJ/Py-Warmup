@@ -1,0 +1,70 @@
+#+TITLE: ToDo_Py
+#+AUTHOR: J. Trips
+#+DATE: <2025-01-23 jeu>
+#+LANGUAGE: en
+#+EXPORT_FILE_NAME: todo_py
+#+DESCRIPTION: Exercise 3 of the python warmup
+#+STARTUP: show2levels
+#+OPTIONS: toc:2
+# -*- org-src-preserve-indentation: t; -*-
+
+* ToDo_Py
+:PROPERTIES:
+:header-args: :tangle todo.py :exports code
+:END:
+** Instructions
+Target: Build a simple todolist program
+- User cann add, remove and display Tasks
+- Tasks are saved as a text file
+
+** store tasks
+we will store tasks in a list for the time being, lits are indexed and that will come in handy later
+
+#+begin_src python
+tasklist = []
+#+end_src
+** add Task
+Adding a task is as simple as asking for input and appending to a list. Would be nice to check if its all whitespace or empty first
+#+begin_src python
+def is_not_blank(s:str)->bool:
+    return bool(s and not s.isspace())
+#+end_src
+This will check if the string is empty or all whitespace and return true if not
+
+#+begin_src python  
+  def add_task(tasklist: list)-> list:
+    task = input("what Do you want to add: ")
+    if is_not_blank(task):
+      tasklist.append(task)
+      return tasklist
+#+end_src
+** remove Task
+now to remove a task, retyping it would be a bother so we will adress them with their index
+
+#+begin_src python
+   def remove_task(tasklist: list)-> list:
+     selected_task = int(input("which task do you want to remove (Index N°)?: "))
+     if tasklist[selected_task]:
+        print(f"{tasklist.pop(selected_task)} has been removed")
+     else:
+        print("The specified task does not exsist")
+     return tasklist
+
+#+end_src
+** display Tasks
+** save Tasks
+** load Tasks
+** Main function and execution
+Here we put everything together and run the program
+
+#+begin_src python
+  def main():
+      print("Hello")
+      print(add_task(tasklist))
+      print(remove_task(tasklist))
+
+  if __name__ == "__main__":
+      main()
+#+end_src
+
+the ~if __name__ == "__main__":~ checks if the code is intended to be ececuted and not just imported, so it doesent run when someone imports, say is_not_blank() for his own use.
