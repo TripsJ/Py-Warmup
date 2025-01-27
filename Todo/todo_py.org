@@ -20,9 +20,7 @@ Target: Build a simple todolist program
 ** store tasks
 we will store tasks in a list for the time being, lists are indexed and that will come in handy later
 
-#+begin_src python
-tasklist = []
-#+end_src
+to do this we put ~tasklist = []~ atop our main function
 ** add Task
 Adding a task is as simple as asking for input and appending to a list. Would be nice to check if its all whitespace or empty first
 #+begin_src python
@@ -32,7 +30,7 @@ def is_not_blank(s:str)->bool:
 This will check if the string is empty or all whitespace and return true if not
 
 #+begin_src python  
-  def add_task(tasklist: list)-> list:
+  def add_task(tasklist: list[str])-> list:
     task = input("what Do you want to add: ")
     if is_not_blank(task):
       tasklist.append(task)
@@ -44,7 +42,7 @@ This will check if the string is empty or all whitespace and return true if not
 now to remove a task, retyping it would be a bother so we will adress them with their index
 
 #+begin_src python
-   def remove_task(tasklist: list)-> list:
+   def remove_task(tasklist: list[str])-> list:
      selected_task = int(input("which task do you want to remove (Index N°)?: "))
      try:
         print(f"{tasklist.pop(selected_task)} has been removed")
@@ -55,7 +53,7 @@ now to remove a task, retyping it would be a bother so we will adress them with 
 #+end_src
 ** display Tasks
 #+begin_src python
-  def display(tasklist:list)->None:
+  def display(tasklist:list[str])->None:
     if not tasklist:
       print ("YOUR ALL DONE")
     else:
@@ -65,7 +63,16 @@ now to remove a task, retyping it would be a bother so we will adress them with 
 
 The ~enumerate()~ function takes an itterable and assignes it a value, you can use it to create counters in loops
 ** save Tasks
+In the following block we will implement the save function by writing everythin to a file
+it will take the same approache as the display function but use a context manager to write the lines to a file
 
+#+begin_src python
+  def save_to_file(tasklist :list[str])->bool:
+    with open("tasks.txt","w") as file:
+      for element, task in enumerate(tasklist):
+        file.write(f"{element}. {task}\n")
+      return True
+#+end_src
 ** load Tasks
 ** Interactive menu
 we need an interactive menu to display the Items and the users choices
@@ -74,10 +81,10 @@ a while loop will do the trick
 #+begin_src python
   def menu(tasklist)->None:  
     while True:
-      display(tasklist)
       print("")
       print("Please choose your action")
       print("Press A to add a task")
+      print("Press D to display the task list")
       print("Press R to remove a task")
       print("Press L to load a tasklist from a file")
       print("Press S to save the current task list")
@@ -90,8 +97,17 @@ a while loop will do the trick
           tasklist = add_task(tasklist)
         case "R":
           tasklist = remove_task(tasklist)
-        case "S" | "L":
-          print("not yet implemented")
+        case "S":
+          print("saving...")
+          if save_to_file(tasklist):
+            print("Tasks saved to tasks.txt")
+          else:
+            print("saving failed")
+        case "D":
+          print("")
+          print("-"*30)
+          display(tasklist)
+          print("-"*30)
         case "Q":
           print("Goodbye")
           break
@@ -103,8 +119,12 @@ Here we put everything together and run the program
 
 #+begin_src python
   def main():
+      tasklist = []
       print ("Welcome User")
       print("")
+      print("-"*30)
+      display(tasklist)
+      print("-"*30)
       menu(tasklist)
 
 
