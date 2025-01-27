@@ -10,7 +10,18 @@ def add_task(tasklist: list[str])-> list:
     return tasklist
 
 def remove_task(tasklist: list[str])-> list:
-  selected_task = int(input("which task do you want to remove (Index N°)?: "))
+  if not tasklist:
+    print ("No Tasks in list")
+    return tasklist
+
+  while True:
+    userinput = input("which task do you want to remove (Index N°)?: ")
+    if userinput.isdigit():
+      selected_task = int(userinput)
+      break
+    else:
+      continue
+
   try:
      print(f"{tasklist.pop(selected_task)} has been removed")
   except IndexError:

@@ -42,13 +42,24 @@ This will check if the string is empty or all whitespace and return true if not
 now to remove a task, retyping it would be a bother so we will adress them with their index
 
 #+begin_src python
-   def remove_task(tasklist: list[str])-> list:
-     selected_task = int(input("which task do you want to remove (Index N°)?: "))
-     try:
-        print(f"{tasklist.pop(selected_task)} has been removed")
-     except IndexError:
-        print("The specified task does not exsist")
-     return tasklist
+  def remove_task(tasklist: list[str])-> list:
+    if not tasklist:
+      print ("No Tasks in list")
+      return tasklist
+    
+    while True:
+      userinput = input("which task do you want to remove (Index N°)?: ")
+      if userinput.isdigit():
+        selected_task = int(userinput)
+        break
+      else:
+        continue
+
+    try:
+       print(f"{tasklist.pop(selected_task)} has been removed")
+    except IndexError:
+       print("The specified task does not exsist")
+    return tasklist
 
 #+end_src
 ** display Tasks
